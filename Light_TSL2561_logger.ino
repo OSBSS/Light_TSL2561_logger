@@ -50,7 +50,7 @@ void setup()
   
   configureTSL2561();// configure light sensor after powering on
   
-  if(!sd.begin(SDcsPin, SPI_FULL_SPEED))  // initialize SD card on the SPI bus - very important
+  if(!sd.init(SPI_FULL_SPEED, SDcsPin))  // initialize SD card on the SPI bus - very important
   {
     delay(10);
     SDcardError();
@@ -118,7 +118,7 @@ void loop()
     lux = -1;
   
   pinMode(SDcsPin, OUTPUT);
-  if(!sd.begin(SDcsPin, SPI_FULL_SPEED))    // very important - reinitialize SD card on the SPI bus
+  if(!sd.init(SPI_FULL_SPEED, SDcsPin))    // very important - reinitialize SD card on the SPI bus
   {
     delay(10);
     SDcardError();
